@@ -20,5 +20,5 @@ if __name__ == '__main__':  #dunder main
         print(filho.nome)
     alexandre.sobrenome = 'Sonehara'
     del alexandre.filhos
-    print(alexandre.__dict__)   #dunder dict
+    print(alexandre.__dict__)  #dunder dict
     print(akio.__dict__)
