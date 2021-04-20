@@ -1,11 +1,23 @@
 class Pessoa:
+    # atributo de classe
+    olhos = 2
+
     def __init__(self, *filhos, nome=None, idade=35):
+        # atributos de instância
         self.idade = idade
         self.nome = nome
         self.filhos = list(filhos)
 
     def cumprimentar(self):
         return f'Old {id(self)}'
+
+    # @staticmethod
+    # def metodo_estatico():
+    #     return 42
+    #
+    # @classemethod
+    # def metodo_e_atributos_de_classe():
+    #     return 42
 
 
 if __name__ == '__main__':  #dunder main
@@ -20,5 +32,12 @@ if __name__ == '__main__':  #dunder main
         print(filho.nome)
     alexandre.sobrenome = 'Sonehara'
     del alexandre.filhos
-    print(alexandre.__dict__)  #dunder dict
+    alexandre.olhos = 1
+    del alexandre.olhos
     print(akio.__dict__)
+    print(alexandre.__dict__)  #dunder dict
+    Pessoa.olhos = 3
+    print(Pessoa.olhos)
+    print(alexandre.olhos)
+    print(akio.olhos)
+    print(id(Pessoa.olhos), id(alexandre.olhos), id(akio.olhos))
