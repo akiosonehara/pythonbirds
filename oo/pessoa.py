@@ -11,13 +11,13 @@ class Pessoa:
     def cumprimentar(self):
         return f'Old {id(self)}'
 
-    # @staticmethod
-    # def metodo_estatico():
-    #     return 42
-    #
-    # @classemethod
-    # def metodo_e_atributos_de_classe():
-    #     return 42
+    @staticmethod
+    def metodo_estatico():
+        return 42
+
+    @classmethod
+    def nome_e_atributos_de_classe(cls):
+        return f'{cls} - olhos {cls.olhos}'
 
 
 if __name__ == '__main__':  #dunder main
@@ -41,3 +41,4 @@ if __name__ == '__main__':  #dunder main
     print(alexandre.olhos)
     print(akio.olhos)
     print(id(Pessoa.olhos), id(alexandre.olhos), id(akio.olhos))
+    print(Pessoa.nome_e_atributos_de_classe(), alexandre.nome_e_atributos_de_classe())
