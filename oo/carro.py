@@ -27,19 +27,19 @@ O       L
     >>> motor.velocidade
     0
     >>> motor.acelerar()
-    >>> motor.velocidade()
+    >>> motor.velocidade
     1
     >>> motor.acelerar()
-    >>> motor.velocidade()
+    >>> motor.velocidade
     2
     >>> motor.acelerar()
-    >>> motor.velocidade()
+    >>> motor.velocidade
     3
     >>> motor.frear()
-    >>> motor.velocidade()
+    >>> motor.velocidade
     1
     >>> motor.frear()
-    >>> motor.velocidade()
+    >>> motor.velocidade
     0
     >>> # Testando Direcao
     >>> direcao = Direcao()
@@ -93,3 +93,38 @@ O       L
     >>> carro.calcular_direcao()
     'Oeste'
 """
+
+NORTE = 'Norte'
+SUL = 'Sul'
+LESTE = 'Leste'
+OESTE = 'Oeste'
+
+
+class Direcao:
+    rotacao_a_direita_dict = {
+        NORTE: LESTE, LESTE: SUL, SUL: OESTE, OESTE: NORTE
+    }
+    rotacao_a_esquerda_dict = {
+        NORTE: OESTE, OESTE: SUL, SUL: LESTE, LESTE: NORTE
+    }
+
+    def __init__(self):
+        self.valor = NORTE
+
+    def girar_a_direita(self):
+        self.valor = self.rotacao_a_direita_dict[self.valor]
+
+    def girar_a_esquerda(self):
+        self.valor = self.rotacao_a_esquerda_dict[self.valor]
+
+
+class Motor:
+    def __init__(self):  # atributos da classe criados com o "dunder init"
+        self.velocidade = 0
+
+    def acelerar(self):
+        self.velocidade += 1
+
+    def frear(self):
+        self.velocidade -= 2
+        self.velocidade = max(0, self.velocidade)
