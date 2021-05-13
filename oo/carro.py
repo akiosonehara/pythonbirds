@@ -117,15 +117,10 @@ class Carro:
     def girar_a_esquerda(self):
         self.direcao.girar_a_esquerda()
 
-
-
-
-
 NORTE = 'Norte'
 SUL = 'Sul'
 LESTE = 'Leste'
 OESTE = 'Oeste'
-
 
 class Direcao:
     rotacao_a_direita_dict = {
