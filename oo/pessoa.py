@@ -19,10 +19,13 @@ class Pessoa:
     def nome_e_atributos_de_classe(cls):
         return f'{cls} - olhos {cls.olhos}'
 
+class Homem(Pessoa):
+    pass
+
 
 if __name__ == '__main__':  #dunder main
-    akio = Pessoa(nome='Akio')
-    alexandre = Pessoa(akio, nome='Alexandre')
+    akio = Homem(nome='Akio')
+    alexandre = Homem(akio, nome='Alexandre')
     print(Pessoa.cumprimentar(alexandre))
     print(id(alexandre))
     print(alexandre.cumprimentar())
@@ -42,3 +45,8 @@ if __name__ == '__main__':  #dunder main
     print(akio.olhos)
     print(id(Pessoa.olhos), id(alexandre.olhos), id(akio.olhos))
     print(Pessoa.nome_e_atributos_de_classe(), alexandre.nome_e_atributos_de_classe())
+    pessoa=Pessoa('Anonimo')
+    print(isinstance(pessoa, Pessoa))
+    print(isinstance(pessoa, Homem))
+    print(isinstance(akio, Pessoa))
+    print(isinstance(akio, Homem))
