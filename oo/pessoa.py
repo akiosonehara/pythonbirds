@@ -9,7 +9,7 @@ class Pessoa:
         self.filhos = list(filhos)
 
     def cumprimentar(self):
-        return f'Old {id(self)}'
+        return f'Olá, meu nome é {self.nome}'
 
     @staticmethod
     def metodo_estatico():
@@ -20,11 +20,16 @@ class Pessoa:
         return f'{cls} - olhos {cls.olhos}'
 
 class Homem(Pessoa):
-    pass
+    def cumprimentar(self):
+        cumprimentar_da_classe=super().cumprimentar()
+        return f'{cumprimentar_da_classe}. Aperto de mão'
+
+class Mutante(Pessoa):
+    olhos = 3
 
 
 if __name__ == '__main__':  #dunder main
-    akio = Homem(nome='Akio')
+    akio = Mutante(nome='Akio')
     alexandre = Homem(akio, nome='Alexandre')
     print(Pessoa.cumprimentar(alexandre))
     print(id(alexandre))
@@ -39,7 +44,6 @@ if __name__ == '__main__':  #dunder main
     del alexandre.olhos
     print(akio.__dict__)
     print(alexandre.__dict__)  #dunder dict
-    Pessoa.olhos = 3
     print(Pessoa.olhos)
     print(alexandre.olhos)
     print(akio.olhos)
@@ -50,3 +54,6 @@ if __name__ == '__main__':  #dunder main
     print(isinstance(pessoa, Homem))
     print(isinstance(akio, Pessoa))
     print(isinstance(akio, Homem))
+    print(akio.olhos)
+    print(akio.cumprimentar())
+    print(alexandre.cumprimentar())
